@@ -1,0 +1,27 @@
+.filter-main {
+}
+
+.filter-main__title,
+.filter-main__textbox {
+  display: inline-block;
+  width: 40%;
+  margin: 0.5rem auto;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+}
+
+.filter-main__title {
+  text-align: left;
+}
+
+.filter-main__textbox {
+  border: rgb(158, 158, 158) 2px solid;
+  border-radius: 10px;
+  padding-left: 1rem;
+}
+
+.filter-main__textbox:active,
+.filter-main__textbox:focus {
+  border: red 2px solid;
+  outline: none;
+}

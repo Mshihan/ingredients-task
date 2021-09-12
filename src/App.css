@@ -1,3 +1,8 @@
 .App {
   text-align: center;
 }
+
+.header-main {
+  font-size: 2.5rem;
+  color: gray;
+}

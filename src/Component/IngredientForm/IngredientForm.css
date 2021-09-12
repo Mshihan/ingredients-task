@@ -1,0 +1,47 @@
+.form-group {
+}
+
+.form-label,
+.form-control {
+  display: block;
+  width: 80%;
+  margin: 0.5rem auto;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+  font-weight: 500;
+}
+
+.form-label {
+  text-align: left;
+}
+
+.form-control {
+  border: rgb(158, 158, 158) 2px solid;
+  border-radius: 10px;
+  padding-left: 1rem;
+}
+
+.form-control:active,
+.form-control:focus {
+  border: red 2px solid;
+  outline: none;
+}
+
+button[type="submit"] {
+  margin: 1rem 0;
+  background-color: red;
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: white;
+  padding: 0.8rem 1.3rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  cursor: pointer;
+  box-shadow: rgb(148, 148, 148) 2px 2px 8px;
+}

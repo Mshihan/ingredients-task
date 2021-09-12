@@ -1,0 +1,19 @@
+.ingredient-main__amount,
+.ingredient-main__name {
+  width: 40%;
+  display: inline-block;
+  font: inherit;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.ingredient-main__name {
+  text-align: left;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.ingredient-main__amount {
+  text-align: right;
+  font-size: 1.3rem;
+  font-weight: 500;
+}

@@ -1,0 +1,14 @@
+.ingredients-main {
+  max-width: 500px;
+  margin: 2rem auto;
+  /* padding: 1rem 0; */
+}
+.ingredients-main__title {
+  text-align: left;
+  font-size: 1.8rem;
+}
+.ingredients-main__bar {
+  width: 100%;
+  height: 3px;
+  background-color: rgb(128, 128, 128);
+}
