@@ -1,25 +1,26 @@
 import "./IngredientForm.css";
 import React, { useState, useReducer, useRef } from "react";
 import Modal from "../Modal/Modal";
+import { useDispatch } from "react-redux";
 
-const inputReducer = (state, action) => {
-  if (action.type === "NameInput") {
-    return {
-      name: action.val,
-      amount: state.amount,
-    };
-  }
-  if (action.type === "AmountInput") {
-    return {
-      name: state.name,
-      amount: action.val,
-    };
-  }
-  return {
-    name: "",
-    amount: "",
-  };
-};
+// const inputReducer = (state, action) => {
+//   if (action.type === "NameInput") {
+//     return {
+//       name: action.val,
+//       amount: state.amount,
+//     };
+//   }
+//   if (action.type === "AmountInput") {
+//     return {
+//       name: state.name,
+//       amount: action.val,
+//     };
+//   }
+//   return {
+//     name: "",
+//     amount: "",
+//   };
+// };
 
 const IngredientForm = () => {
   // const [Name, setName] = useState("");
@@ -27,28 +28,33 @@ const IngredientForm = () => {
   const nameRef = useRef();
   const amountRef = useRef();
   const [isModal, setIsModal] = useState(false);
+  const dispatch = useDispatch();
 
-  const [userInputs, dispatchUserInputs] = useReducer(inputReducer, {
-    name: "",
-    amount: "",
-  });
+  // const [userInputs, dispatchUserInputs] = useReducer(inputReducer, {
+  //   name: "",
+  //   amount: "",
+  // });
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     setIsModal(() => !isModal);
 
-    setTimeout(() => {
-      console.log(userInputs);
-    }, 2000);
+    dispatch({
+      type: "addIngredient",
+      value: {
+        name: nameRef.current.value,
+        amount: amountRef.current.value,
+      },
+    });
   };
 
-  const nameOnChangeHandler = () => {
-    dispatchUserInputs({ type: "NameInput", val: nameRef.current.value });
-  };
+  // const nameOnChangeHandler = () => {
+  //   dispatchUserInputs({ type: "NameInput", val: nameRef.current.value });
+  // };
 
-  const numberOnChangeHandler = () => {
-    dispatchUserInputs({ type: "AmountInput", val: amountRef.current.value });
-  };
+  // const numberOnChangeHandler = () => {
+  //   dispatchUserInputs({ type: "AmountInput", val: amountRef.current.value });
+  // };
 
   return (
     <div>
@@ -60,7 +66,7 @@ const IngredientForm = () => {
             className="form-control"
             ref={nameRef}
             type="text"
-            onChange={nameOnChangeHandler}
+            // onChange={nameOnChangeHandler}
           />
         </div>
         <div className="form-group">
@@ -69,7 +75,7 @@ const IngredientForm = () => {
             className="form-control"
             ref={amountRef}
             type="number"
-            onChange={numberOnChangeHandler}
+            // onChange={numberOnChangeHandler}
           />
         </div>
         <button type="submit">Add Ingredient</button>

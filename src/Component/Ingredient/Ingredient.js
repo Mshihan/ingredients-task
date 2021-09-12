@@ -1,9 +1,9 @@
 import "./Ingredient.css";
-const Ingredient = () => {
+const Ingredient = (props) => {
   return (
     <div className="ingredient-main">
-      <p className="ingredient-main__name">Apples</p>
-      <p className="ingredient-main__amount">10x</p>
+      <p className="ingredient-main__name">{props.name}</p>
+      <p className="ingredient-main__amount">`${props.amount}x`</p>
     </div>
   );
 };
