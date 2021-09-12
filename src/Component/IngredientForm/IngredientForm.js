@@ -1,15 +1,53 @@
 import "./IngredientForm.css";
-import React, { useState } from "react";
+import React, { useState, useReducer, useRef } from "react";
 import Modal from "../Modal/Modal";
 
+const inputReducer = (state, action) => {
+  if (action.type === "NameInput") {
+    return {
+      name: action.val,
+      amount: state.amount,
+    };
+  }
+  if (action.type === "AmountInput") {
+    return {
+      name: state.name,
+      amount: action.val,
+    };
+  }
+  return {
+    name: "",
+    amount: "",
+  };
+};
+
 const IngredientForm = () => {
-  const [Name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  // const [Name, setName] = useState("");
+  // const [number, setNumber] = useState("");
+  const nameRef = useRef();
+  const amountRef = useRef();
   const [isModal, setIsModal] = useState(false);
+
+  const [userInputs, dispatchUserInputs] = useReducer(inputReducer, {
+    name: "",
+    amount: "",
+  });
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     setIsModal(() => !isModal);
+
+    setTimeout(() => {
+      console.log(userInputs);
+    }, 2000);
+  };
+
+  const nameOnChangeHandler = () => {
+    dispatchUserInputs({ type: "NameInput", val: nameRef.current.value });
+  };
+
+  const numberOnChangeHandler = () => {
+    dispatchUserInputs({ type: "AmountInput", val: amountRef.current.value });
   };
 
   return (
@@ -20,18 +58,18 @@ const IngredientForm = () => {
           <label className="form-label">Name</label>
           <input
             className="form-control"
+            ref={nameRef}
             type="text"
-            value={Name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={nameOnChangeHandler}
           />
         </div>
         <div className="form-group">
           <label className="form-label">Amount</label>
           <input
             className="form-control"
+            ref={amountRef}
             type="number"
-            value={number}
-            onChange={(event) => setNumber(event.target.value)}
+            onChange={numberOnChangeHandler}
           />
         </div>
         <button type="submit">Add Ingredient</button>
