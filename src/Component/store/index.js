@@ -2,8 +2,9 @@ import { createStore } from "redux";
 
 const counterReducer = (state = { list: [] }, action) => {
   if (action.type === "addIngredient") {
-    console.log(action.value);
-    return { list: state.list.push(action.value) };
+    return {
+      list: [...state.list, action.value],
+    };
   }
   return state;
 };

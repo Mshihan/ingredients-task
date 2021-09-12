@@ -1,5 +1,5 @@
 import "./IngredientForm.css";
-import React, { useState, useReducer, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Modal from "../Modal/Modal";
 import { useDispatch } from "react-redux";
 
